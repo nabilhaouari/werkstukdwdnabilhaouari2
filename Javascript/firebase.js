@@ -1,0 +1,4 @@
+class firebase {
+
+}
+export firebase;
