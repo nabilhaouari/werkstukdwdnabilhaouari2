@@ -6,6 +6,7 @@ searchElement.addEventListener("keyup", SearchAnime);
 let animeArray = [];
 
 async function SearchAnime() {
+
     animeArray = [];
     console.log(searchElement.value);
     let resultAnime = await (await fetch(`${apipath}/search/anime?q=${searchElement.value}`)).json();

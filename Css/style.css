@@ -22,6 +22,13 @@ div.navbar a {
     font-size: 1em;
 }
 
+div.bannerslideshow img {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    display: block;
+}
+
 div.navbar input[type=text] {
     font-size: 0.8em;
     border: none;
@@ -156,6 +163,8 @@ a.link:hover {
     font-size: 3 em;
 }
 
+
+
 .overlay:hover {
     opacity: 0.9;
     transition: 0.3s ease-in;
@@ -163,6 +172,7 @@ a.link:hover {
 
 .buttons {
     margin-left: 40px;
+
 }
 
 .addtolist {
@@ -198,4 +208,5 @@ a.link:hover {
     width: 60px;
     border-radius: 50px;
     border-style: solid;
+
 }
