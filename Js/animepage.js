@@ -1,10 +1,7 @@
 import Firebase from "./firebase.js";
 const animeDatabase = new Firebase();
-let AnimeList;
-animeDatabase.renderAnime().then(list => {
-    AnimeList = list;
-    console.log(list);
-});
+await animeDatabase.renderAnime();
+let AnimeList = animeDatabase.list;
 
 console.log(AnimeList);
 
@@ -15,23 +12,6 @@ async function getData(databaseArray) {
     });
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

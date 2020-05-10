@@ -10,16 +10,17 @@ class Firebase {
         this.convertQuerySnapshotToRegularArray = (querySnapshot) => querySnapshot.docs.map((item) => ({
             id: item.id,
             ...item.data()
-        }));
+        }))
+        this.list;
     }
     async renderAnime() {
         let anime;
         this.animeCollection.onSnapshot((querySnapshot) => {
             anime = this.convertQuerySnapshotToRegularArray(querySnapshot);
             console.log(anime);
-
+            this.list = anime;
         });
-        return anime;
+
     }
 
 }
