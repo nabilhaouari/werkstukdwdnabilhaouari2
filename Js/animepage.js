@@ -1,9 +1,32 @@
-import Firebase from "./firebase.js";
-const animeDatabase = new Firebase();
-await animeDatabase.renderAnime();
-let AnimeList = animeDatabase.list;
+firebase.initializeApp({
+    apiKey: 'AIzaSyCVdpqkX6nfY8VE62t7q5vorGzq4KeVnqA',
+    projectId: 'shionanime-4b2e6'
+});
+const database = firebase.firestore();
+const animeCollection = database.collection("AnimeList");
 
-console.log(AnimeList);
+const convertQuerySnapshotToRegularArray = (querySnapshot) => querySnapshot.docs.map((item) => ({
+    idDB: item.id,
+    ...item.data()
+}));
+
+
+async function renderAnime() {
+    animeCollection.onSnapshot((querySnapshot) => {
+        const anime = convertQuerySnapshotToRegularArray(querySnapshot);
+        console.log(anime);
+        getData(anime);
+    });
+}
+renderAnime();
+
+function addData(animeId) {
+    animeCollection.add({
+        id: animeId,
+        seen: false
+    })
+    console.log(animeId);
+}
 
 async function getData(databaseArray) {
     databaseArray.forEach(async element => {
@@ -12,8 +35,6 @@ async function getData(databaseArray) {
     });
 
 }
-
-
 
 
 
@@ -55,10 +76,7 @@ async function GetAnime(id) {
 
     let addButton = document.getElementById("addtolist");
     addButton.addEventListener("click", function () {
-        myListArray = JSON.parse(localStorage.getItem("idAnime"));
-        myListArray.push(id);
-        console.log(id);
-        localStorage.setItem("idAnime", JSON.stringify(myListArray));
+        addData(id);
 
     });
 }

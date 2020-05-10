@@ -6,6 +6,15 @@
     font-family: Poppins;
 }
 
+html {
+    overflow-x: hidden;
+}
+
+header {
+    width: 100vw;
+    z-index: 9999;
+}
+
 div.navbar {
     background-color: #8A00ED;
     overflow: hidden;
@@ -13,7 +22,10 @@ div.navbar {
     align-items: center;
     justify-content: space-between;
     height: 50px;
-    padding: 0 10px;
+    z-index: 9999;
+
+    position: fixed;
+    width: 100%;
 }
 
 div.navbar a {
@@ -23,10 +35,10 @@ div.navbar a {
 }
 
 div.bannerslideshow img {
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    display: block;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
 }
 
 div.navbar input[type=text] {
