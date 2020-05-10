@@ -13,11 +13,13 @@ class Firebase {
         }));
     }
     async renderAnime() {
+        let anime;
         this.animeCollection.onSnapshot((querySnapshot) => {
-            const anime = this.convertQuerySnapshotToRegularArray(querySnapshot);
+            anime = this.convertQuerySnapshotToRegularArray(querySnapshot);
             console.log(anime);
-            return anime;
+
         });
+        return anime;
     }
 
 }

@@ -1,28 +1,11 @@
 import Firebase from "./firebase.js";
 const animeDatabase = new Firebase();
-// firebase.initializeApp({
-//     apiKey: 'AIzaSyCVdpqkX6nfY8VE62t7q5vorGzq4KeVnqA',
-//     projectId: ''
-// });
+let AnimeList;
+animeDatabase.renderAnime().then(list => {
+    AnimeList = list;
+    console.log(list);
+});
 
-// const database = firebase.firestore();
-// const animeCollection = database.collection("AnimeList");
-// const convertQuerySnapshotToRegularArray = (querySnapshot) => querySnapshot.docs.map((item) => ({
-//     id: item.id,
-//     ...item.data()
-// }));
-
-
-// async function renderAnime() {
-//     animeCollection.onSnapshot((querySnapshot) => {
-//         const anime = convertQuerySnapshotToRegularArray(querySnapshot);
-//         console.log(anime);
-//         getData(anime);
-//     });
-// }
-// renderAnime();
-
-let AnimeList = animeDatabase.renderAnime();
 console.log(AnimeList);
 
 async function getData(databaseArray) {
