@@ -1,6 +1,4 @@
 const apipath = "https://api.jikan.moe/v3";
-let idAnime = localStorage.getItem("id");
-console.log(idAnime);
 //fetch avec le id que jai enregistrer via un lien, et recup les donne de ce array
 // let resultAnime = await (await fetch(`${apipath}/search/anime?q=${searchElement.value}`)).json();
 
@@ -17,31 +15,30 @@ const convertQuerySnapshotToRegularArray = (querySnapshot) => querySnapshot.docs
 }));
 
 
+
 async function renderAnime() {
     animeCollection.onSnapshot((querySnapshot) => {
         const anime = convertQuerySnapshotToRegularArray(querySnapshot);
+
         console.log(anime);
         getData(anime);
     });
 }
 renderAnime();
 
-function addData(animeId) {
-    animeCollection.add({
-        id: animeId,
-        seen: false
-    })
-    console.log(animeId);
+
+function deleteData(dbid) {
+    animeCollection.doc(dbid).delete().then(function () {
+
+        console.log("Document successfully deleted!");
+    }).catch(function (error) {
+        console.error("Error removing document: ", error);
+    });
 }
 
-// function deleteData(dbid) {
-//     animeCollection.doc(dbid).delete().then(function () {
-//         window.location.reload();
-//         console.log("Document successfully deleted!");
-//     }).catch(function (error) {
-//         console.error("Error removing document: ", error);
-//     });
-// }
+
+
+
 async function getData(databaseArray) {
     databaseArray.forEach(async element => {
         let resultdata = await (await fetch(`${apipath}/anime/${element.id}`)).json();
@@ -52,8 +49,11 @@ async function getData(databaseArray) {
         divAnimeBox.id = "animebox";
         divAnimeBox.dataset.dbid = element.idDB;
 
-        // divAnimeBox.onclick = deleteData(element.idDB);
-
+        divAnimeBox.addEventListener('click', function (e) {
+            console.log(this.dataset.dbid);
+            searchlist.innerHTML = "";
+            deleteData(this.dataset.dbid);
+        });
 
         let imgAnime = document.createElement("img");
         imgAnime.className = "imageanime";

@@ -124,12 +124,12 @@ a.link:hover {
 }
 
 .searchlist {
-    margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(4, 160px);
     justify-content: center;
     column-gap: 20px;
     row-gap: 40px;
+    padding-top: 100px;
 }
 
 .imageanime {
@@ -160,7 +160,7 @@ a.link:hover {
 .fiche {
     display: flex;
     text-align: justify;
-    margin-top: 40px;
+    padding-top: 100px;
     margin-left: 40px;
 }
 
