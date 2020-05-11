@@ -34,30 +34,25 @@ function addData(animeId) {
     console.log(animeId);
 }
 
-function deleteData(dbid) {
-    animeCollection.doc(dbid).delete().then(function () {
-        window.location.reload();
-        console.log("Document successfully deleted!");
-    }).catch(function (error) {
-        console.error("Error removing document: ", error);
-    });
-}
+// function deleteData(dbid) {
+//     animeCollection.doc(dbid).delete().then(function () {
+//         window.location.reload();
+//         console.log("Document successfully deleted!");
+//     }).catch(function (error) {
+//         console.error("Error removing document: ", error);
+//     });
+// }
 async function getData(databaseArray) {
     databaseArray.forEach(async element => {
         let resultdata = await (await fetch(`${apipath}/anime/${element.id}`)).json();
         console.log(resultdata);
-
-        // divAnimeBox.onclick = function AnimeSearch() {
-        //     console.log(element.id);
-        //     window.location = "../Html/anime.html?id=" + element.id;
-        // };
 
         let divAnimeBox = document.createElement("div");
         divAnimeBox.className = "animebox";
         divAnimeBox.id = "animebox";
         divAnimeBox.dataset.dbid = element.idDB;
 
-        divAnimeBox.onclick = deleteData(element.idDB);
+        // divAnimeBox.onclick = deleteData(element.idDB);
 
 
         let imgAnime = document.createElement("img");
