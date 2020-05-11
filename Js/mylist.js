@@ -58,6 +58,10 @@ async function getData(databaseArray) {
             searchlist.innerHTML = "";
             deleteData(this.dataset.dbid);
         });
+        let overlay = document.createElement("div");
+        overlay.className = "overlay";
+        let overlaytext = document.createElement("div");
+        overlaytext.id = "overlaytext";
 
         let imgAnime = document.createElement("img");
         imgAnime.className = "imageanime";
@@ -66,13 +70,15 @@ async function getData(databaseArray) {
         divNameAnime.className = "nameanime";
         let NameAnime = document.createElement("a");
         let NameAnimeText = document.createTextNode(resultdata.title);
-
+        overlaytext.innerHTML = " Delete ";
         divNameAnime.dataset.dbid = element.idDB;
         if (element.seen) {
             divNameAnime.dataset.seen = "true";
         }
 
         searchlist.appendChild(divAnimeBox);
+        divAnimeBox.appendChild(overlay);
+        overlay.appendChild(overlaytext);
         divAnimeBox.appendChild(imgAnime);
         divAnimeBox.appendChild(divNameAnime);
         divNameAnime.appendChild(NameAnime);
