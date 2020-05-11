@@ -93,6 +93,30 @@ a.link:hover {
 
 }
 
+.animebox[data-seen="true"] {
+    background-color: #6900B5;
+    color: white;
+    flex-basis: 20%;
+    display: grid;
+    flex-direction: column;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid #c2c2c2;
+    width: 159px;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.animebox[data-seen="true"] :hover {
+    color: white;
+}
+
+.nameanime[data-seen="true"] {
+    background-color: #6900B5;
+    color: white;
+    position: relative;
+}
+
 #overlaytext {
     color: white;
     font-size: 17px;

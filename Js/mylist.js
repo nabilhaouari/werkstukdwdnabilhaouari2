@@ -48,6 +48,10 @@ async function getData(databaseArray) {
         divAnimeBox.className = "animebox";
         divAnimeBox.id = "animebox";
         divAnimeBox.dataset.dbid = element.idDB;
+        if (element.seen) {
+            divAnimeBox.dataset.seen = "true";
+        }
+
 
         divAnimeBox.addEventListener('click', function (e) {
             console.log(this.dataset.dbid);
@@ -61,7 +65,12 @@ async function getData(databaseArray) {
         let divNameAnime = document.createElement("div");
         divNameAnime.className = "nameanime";
         let NameAnime = document.createElement("a");
-        let NameAnimeText = document.createTextNode(resultdata.title)
+        let NameAnimeText = document.createTextNode(resultdata.title);
+
+        divNameAnime.dataset.dbid = element.idDB;
+        if (element.seen) {
+            divNameAnime.dataset.seen = "true";
+        }
 
         searchlist.appendChild(divAnimeBox);
         divAnimeBox.appendChild(imgAnime);
