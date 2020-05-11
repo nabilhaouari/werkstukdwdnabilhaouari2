@@ -34,7 +34,7 @@ renderAnime();
 
 function addData(animeId, databaseArray) {
     let found = databaseArray.find(element => element.id == animeId);
-    console.log("founddd");
+    console.log("found!");
     console.log(found);
     if (found == undefined) {
         animeCollection.add({
@@ -42,15 +42,16 @@ function addData(animeId, databaseArray) {
             seen: false
         })
         console.log(animeId);
-
+       
     } else {
         alert("This anime has already been added baka =^_^=")
 
     }
 }
 
-function updateData(animeId) {
-    animeCollection.doc(animeId).update({
+function updateData(dbid) {
+
+    animeCollection.doc(dbid).update({
         seen: true
     })
 }
@@ -101,7 +102,15 @@ async function GetAnime(id, databaseArray) {
         console.log("test");
 
     });
+    let seen = document.getElementById("alreadyseen");
 
+    seen.addEventListener("click", function () {
+        let trouver = databaseArray.find(element => element.id == id);
+        console.log(databaseArray);
+        console.log(trouver);
+        updateData(trouver.idDB);
+
+    });
     // let seen = document.getElementById("alreadyseen");
     // seen.addEventListener("click", function () {
     //     updateData(seen);
