@@ -136,7 +136,7 @@ a.link:hover {
     width: 80px;
     height: 80px;
     object-fit: cover;
-    
+
 }
 
 #profilepic img {
@@ -173,6 +173,11 @@ a.link:hover {
 
 .searchresult {
     text-align: center;
+}
+
+#searchresultlist {
+    text-align: center;
+    padding-top: 50px;
 }
 
 .searchlist {
