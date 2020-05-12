@@ -42,7 +42,7 @@ function addData(animeId, databaseArray) {
             seen: false
         })
         console.log(animeId);
-       
+
     } else {
         alert("This anime has already been added baka =^_^=")
 
@@ -73,10 +73,11 @@ function updateData(dbid) {
 
 async function GetAnime(id, databaseArray) {
 
-
+    staffArray = [];
     let resultAnimePage = await (await fetch(`${apipath}/anime/${id}`)).json();
     let resultStaff = await (await fetch(`${apipath}/anime/${id}/characters_staff`)).json();
     // console.log(resultStaff);
+    console.log(resultStaff);
     let imgAnime = document.createElement("img");
     imgAnime.setAttribute("src", resultAnimePage.image_url);
     let titleAnime = document.createElement("h1");
@@ -85,7 +86,8 @@ async function GetAnime(id, databaseArray) {
     let synopsisAnimeText = document.createTextNode(resultAnimePage.synopsis);
 
 
-    let ficheimage = document.getElementById("ficheimage");
+
+
     ficheimage.innerHTML = "";
     ficheimage.appendChild(imgAnime);
     let fichesynopsis = document.getElementById("fichesynopsis");
@@ -96,10 +98,26 @@ async function GetAnime(id, databaseArray) {
     synopsisAnime.appendChild(synopsisAnimeText);
 
 
+
+    // resultStaff.forEach(element => {
+    //     let divprofilepic = document.getElementById("profilepic");
+    //     let profilepic = document.createElement("img");
+    //     profilepic.setAttribute("src", resultStaff.characters.image_url);
+
+    //     let profilename = document.createElement("a");
+    //     let profilenametext = document.createTextNode(resultStaff.characters);
+    //     let ficheimage = document.getElementById("ficheimage");
+    //     divprofilepic.appendChild(profilepic);
+    //     divprofilepic.appendChild(profilename);
+    //     profilename.appendChild(profilenametext);
+    // });
+
+
+
     let addButton = document.getElementById("addtolist");
     addButton.addEventListener("click", function () {
         addData(id, databaseArray);
-        console.log("test");
+
 
     });
     let seen = document.getElementById("alreadyseen");
